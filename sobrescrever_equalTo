@@ -1,0 +1,7 @@
+//dentro da classe ItemPadaria
+
+@Override
+public boolean equals(Object o) {
+       return o instanceof ItemPadaria && this.nome.equals(((ItemPadaria)o).getNome());
+       
+}
