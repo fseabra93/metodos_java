@@ -1,0 +1,9 @@
+    public static <T extends Comparable> T maisVotado (T[] array){
+        T maior = array[0];
+        for (T n : array){
+            if (n.compareTo(maior) > 0){
+                maior = n;
+            }
+        }
+        return maior;
+    }
