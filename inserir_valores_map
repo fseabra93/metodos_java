@@ -1,0 +1,17 @@
+
+//cria Map
+Map<String, Eleitor> eleitores = new HashMap<>();        
+        
+pessoas.add(new Pessoa("Harry Potter", "838.084.030-55", "31/07/1980", "Natal", "RN"));
+pessoas.add(new Pessoa("Walter White", "689111720-81", "07/09/1958", "Parnamirim", "RN"));
+pessoas.add(new Pessoa("Harvey Specter", "976.009.930-66", "22/01/1972", "Parnamirim", "RN"));
+pessoas.add(new Pessoa("Elaine Bennes", "859.273.820-29", "14/05/1975", "Macaiba", "RN"));
+pessoas.add(new Pessoa("Hermione Granger", "67798083006", "19/09/1979", "Natal", "RN"));
+pessoas.add(new Pessoa("Chandler Bing", "151.285.97024", "18/10/1967", "Parnamirim", "RN"));
+pessoas.add(new Pessoa("Sheldon Cooper", "151.285.970-23", "26/02/1980", "Natal", "RN")); //CPF inválido
+pessoas.add(new Pessoa("Phoebe Buffay", "207302.750-43", "16/02/1967", "Macaiba", "RN"));
+pessoas.add(new Pessoa("Beth Harmon", "151.285.970-24", "12/05/1979", "Natal", "RN")); //CPF igual ao de Chandler Bing
+pessoas.add(new Pessoa("Bartholomew Simpson", "999.493.460-02", "28/09/2010", "Natal", "RN")); //menos de 16 anos
+
+eleitores.put(cpf_reconstruido, new Eleitor(p.getNome(), cpf_reconstruido, p.getDataNascimento(), p.getCidade(), p.getEstado(), titulo, num_zona, idade));  
+
