@@ -1,0 +1,110 @@
+    public static boolean checarCPF(List<Character> cpf_checar){
+        
+        List<Character> elementos_principais = cpf_checar.stream()
+                        .limit(9)
+                        .collect(Collectors.toList());
+        
+          
+        List<Character> elementos_verificadores = cpf_checar.stream()
+                        .skip(9)
+                        .collect(Collectors.toList());
+        
+        int primeiroVerificador = Character.getNumericValue(elementos_verificadores.get(0));
+        int segundoVerificador = Character.getNumericValue(elementos_verificadores.get(1));
+        
+        boolean prim_digit_cpf = checa_primeiro_digito(elementos_principais, primeiroVerificador);
+        boolean seg_digit_cpf = checa_segundo_digito(elementos_principais, primeiroVerificador, segundoVerificador);
+        
+        if (prim_digit_cpf && seg_digit_cpf){
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+    
+
+    
+    public static boolean checa_primeiro_digito(List<Character>lista, int verificador){
+        int mult = 10;
+        List<Integer>lista_multiplica = new ArrayList();
+        
+        for (char valor : lista ){
+            lista_multiplica.add(mult*(Character.getNumericValue(valor)));
+            mult--;
+        }
+        
+        int soma = lista_multiplica.stream()
+                .reduce(0, Integer::sum);
+        
+        int resto = soma % 11;
+        
+        if ((resto == 0 || resto == 1) && verificador == 0){
+            return true;
+        } else if ((resto != 0 && resto != 1) && (11 - resto == verificador) ){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static boolean checa_segundo_digito(List<Character>lista, int num , int verificador){
+        int mult = 11;
+        List<Integer>lista_multiplica = new ArrayList();
+        
+        for (char valor : lista ){
+            lista_multiplica.add(mult*(Character.getNumericValue(valor)));
+            mult--;
+        }
+        
+        lista_multiplica.add(num*2);
+        
+        int soma = lista_multiplica.stream()
+                .reduce(0, Integer::sum);
+        
+        int resto = soma % 11;
+                
+        if ((resto == 0 || resto == 1) && verificador == 0){
+            return true;
+        } else if ((resto != 0 && resto != 1) && (11 - resto == verificador) ){
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    
+    public static String reconstroiCPF(List<Character>lista){
+        String cpf_primeiraParte = lista.stream()
+                .map(String::valueOf)
+                .limit(3)
+                .collect(Collectors.joining());
+        
+        String cpf_segundaParte = lista.stream()
+                .map(String::valueOf)
+                .limit(6)
+                .skip(3)
+                .collect(Collectors.joining());
+        
+        String cpf_terceiraParte = lista.stream()
+                .map(String::valueOf)
+                .limit(9)
+                .skip(6)
+                .collect(Collectors.joining());
+        
+        String cpf_verificadores = lista.stream()
+                .map(String::valueOf)
+                .skip(9)
+                .collect(Collectors.joining());
+        
+        String concatenacao1 = Stream.of(cpf_primeiraParte, cpf_segundaParte, cpf_terceiraParte)
+                .collect(Collectors.joining("."));
+        
+        String concatenacao_final = Stream.of(concatenacao1, cpf_verificadores)
+                .collect(Collectors.joining("-"));
+        
+
+        return concatenacao_final;
+        
+    }
