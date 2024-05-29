@@ -1,0 +1,7 @@
+//usada pra separar cada palavra fornecida em uma entrada e transformar em uma lista de palavras
+
+public List<String> getAtributos() {
+        return Stream.of(nome, cpf, dataNascimento, cidade, estado )
+                .flatMap(str -> Arrays.stream(str.split("\\s+")))
+                .collect(Collectors.toList());
+}
