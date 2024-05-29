@@ -1,0 +1,12 @@
+//como sobrescrever um toString
+
+@Override
+public String toString() {
+        return  "\nEleitor: " + this.getNome() +
+                "\nTítulo de Eleitor: "+titulo+
+                "\nIdade: "+ idade +
+                "\nCidade: "+this.getCidade()+ "-"+this.getEstado()+
+                "\nZona Eleitoral: "+zonaEleitoral+
+                "\n---------------------------------------------------";
+
+}
