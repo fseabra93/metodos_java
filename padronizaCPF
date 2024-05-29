@@ -1,3 +1,5 @@
+//Remove pontos e traços do CPF deixando apenas os números
+
 public static List<Character> padronizaCPF(String cpf_padronizar){
         List<Character> elementos = cpf_padronizar.chars() 
               .mapToObj(c -> (char) c) 
