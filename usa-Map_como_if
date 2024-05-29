@@ -1,0 +1,11 @@
+    public static int selecionaZona(String cidade){
+        
+        Map<String, Integer> mapCidades = new HashMap<>();
+
+        mapCidades.put("Natal", 10);
+        mapCidades.put("Parnamirim", 20);
+        mapCidades.put("Macaiba", 30);
+    
+        return mapCidades.get(cidade);
+               
+    }
