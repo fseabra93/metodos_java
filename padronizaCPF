@@ -1,0 +1,11 @@
+public static List<Character> padronizaCPF(String cpf_padronizar){
+        List<Character> elementos = cpf_padronizar.chars() 
+              .mapToObj(c -> (char) c) 
+              .collect(Collectors.toList()); 
+
+        elementos.removeIf(c -> !Character.isDigit(c));
+
+        return elementos;
+        
+        
+}
